@@ -1,4 +1,5 @@
 package com.app.tap.entitites;
+import com.app.tap.enums.Role;
 import jakarta.persistence.*;
 @Entity
 public class Uuser {
@@ -16,12 +17,8 @@ public class Uuser {
     private String firstName;
     @Column
     private String lastName;
-
-    public Uuser(String alfon, String mail, String number, String alfonso, String garay) {
-    }
-//    @OneToOne
-//    @JoinColumn(name = "role_id")
-//    private Rol role;
+    @Enumerated(EnumType.STRING)
+    private Role userRole;
 
     public Integer getUserId() {
         return userId;
@@ -47,12 +44,12 @@ public class Uuser {
         this.email = email;
     }
 
-    public String getPassword() {
+    public String getPssword() {
         return pssword;
     }
 
-    public void setPassword(String password) {
-        this.pssword = password;
+    public void setPssword(String pssword) {
+        this.pssword = pssword;
     }
 
     public String getFirstName() {
@@ -71,11 +68,11 @@ public class Uuser {
         this.lastName = lastName;
     }
 
-//    public Rol getRole() {
-//        return role;                  REPLANTEAR EL ROL COMO UN ENUM NO COMO UNA ENTIDAD NUEVA.
-//    }
-//
-//    public void setRole(Rol role) {
-//        this.role = role;
-//    }
+    public Role getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Role userRole) {
+        this.userRole = userRole;
+    }
 }

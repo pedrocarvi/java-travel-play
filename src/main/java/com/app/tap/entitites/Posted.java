@@ -1,5 +1,8 @@
 package com.app.tap.entitites;
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 public class Posted {
     @Id
@@ -10,13 +13,16 @@ public class Posted {
     @JoinColumn
     private Uuser uuser;
     @Column
-    private String pictured;
+    private List<String> pictured;
     @Column
-    private  String name_posted;
+    private String picture_fav;
+    @Column
+    private String name_posted;
     @Column
     private String description;
     @Column
     private Integer locationX;
     @Column Integer locationY;
+
 
 }
