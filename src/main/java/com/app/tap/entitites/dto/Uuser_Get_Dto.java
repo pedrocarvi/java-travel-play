@@ -1,28 +1,28 @@
-package com.app.tap.entitites.dto; 
+package com.app.tap.entitites.dto;
 import com.app.tap.enums.Role;
 
 import java.io.Serializable;
 
-public class Uuser_Dto implements Serializable {
+public class Uuser_Get_Dto implements Serializable {
 
+    private Integer Id;
     private String userName;
     private String email;
-    private String pssword;
     private String firstName;
     private String lastName;
 
 
     // Constructor vacío
-    public Uuser_Dto() {
+    public Uuser_Get_Dto() {
 
     }
 
     // Constructor para copiar datos desde una entidad Uuser a UuserDTO
-    public Uuser_Dto(String userName, String email,String pssword, String firstName, String lastName, Role userRole) {
+    public Uuser_Get_Dto(Integer Id, String userName, String email, String firstName, String lastName, Role userRole) {
 
+        this.Id = Id;
         this.userName = userName;
         this.email = email;
-        this.pssword = pssword;
         this.firstName = firstName;
         this.lastName = lastName;
 
@@ -32,7 +32,7 @@ public class Uuser_Dto implements Serializable {
 
     // Getters (no lleva setters)
 
-
+    public Integer getId() { return Id; }
     public String getUserName() {
         return userName;
     }
@@ -49,10 +49,11 @@ public class Uuser_Dto implements Serializable {
         return lastName;
     }
 
-    public String getPssword() {
-        return pssword;
-    }
 
+
+    public void setId(Integer Id){
+        this.Id = Id;
+    }
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -69,5 +70,4 @@ public class Uuser_Dto implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setPssword(String pssword) { this.pssword = pssword; }
 }
