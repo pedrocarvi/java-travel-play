@@ -1,4 +1,4 @@
-package com.app.tap.entitites.dto; 
+package com.app.tap.entitites.dtos;
 import com.app.tap.enums.Role;
 
 import java.io.Serializable;

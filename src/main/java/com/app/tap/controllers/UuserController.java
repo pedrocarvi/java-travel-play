@@ -1,8 +1,8 @@
 package com.app.tap.controllers;
 
 import com.app.tap.entitites.Uuser;
-import com.app.tap.entitites.dto.Uuser_Create_Dto;
-import com.app.tap.entitites.dto.Uuser_Get_Dto;
+import com.app.tap.entitites.dtos.Uuser_Create_Dto;
+import com.app.tap.entitites.dtos.Uuser_Get_Dto;
 import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.service.UuserService;
 import org.springframework.beans.factory.annotation.Autowired;

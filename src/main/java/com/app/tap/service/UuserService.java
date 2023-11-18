@@ -1,8 +1,8 @@
 package com.app.tap.service;
 
 import com.app.tap.entitites.Uuser;
-import com.app.tap.entitites.dto.Uuser_Create_Dto;
-import com.app.tap.entitites.dto.Uuser_Get_Dto;
+import com.app.tap.entitites.dtos.Uuser_Create_Dto;
+import com.app.tap.entitites.dtos.Uuser_Get_Dto;
 import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.repository.UuserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class UuserService {
 
 
     public Uuser newUser(Uuser _uuser){
-      return _uuserRepository.save(_uuser);//Retorno directamente el metodo .save desde repository creando el User con _uuser
+      return _uuserRepository.save(_uuser);     //Retorno directamente el metodo .save desde repository creando el User con _uuser
 
     }
 
@@ -71,5 +71,12 @@ public class UuserService {
         _uuserRepository.delete(del_Uuser);
 
 
+    }
+
+    public void convertUuserDtoToUuserInPost(Uuser_Get_Dto uuser_get_dto){
+
+        Uuser uuser = new Uuser();
+
+        uuser.setUserId(uuser_get_dto.getId());
     }
 }
