@@ -23,7 +23,7 @@ public class UuserService {
 
     }
 
-    public Optional<Uuser> findById(Integer id) {
+    public Optional<Uuser> findByIdUuser(Integer id) {
         return _uuserRepository.findById(Long.valueOf(id));
     }
 
@@ -63,7 +63,8 @@ public class UuserService {
     }
 
     public void deletUuser(Integer id)throws ResourceNotFoundException{
-        if(findById(id).isEmpty())
+
+        if(findByIdUuser(id).isEmpty())
             throw new ResourceNotFoundException("No existe el usuario con el id: "+id);
 
         Uuser del_Uuser = _uuserRepository.findById(Long.valueOf(id)).orElse(null);

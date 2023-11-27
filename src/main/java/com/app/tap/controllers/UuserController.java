@@ -34,9 +34,9 @@ public class UuserController {
     @GetMapping("/get/{id}")
     public ResponseEntity<Uuser_Get_Dto> getById(@PathVariable Integer id) throws ResourceNotFoundException {  // En esta linea se agrega "throws ResourceNotFoundException" para devolver si hay un error.
 
-        Uuser get_user = _uuserService.findById(id).orElse(null);
+        Uuser get_user = _uuserService.findByIdUuser(id).orElse(null);
         if (get_user == null){
-            throw new ResourceNotFoundException("Usuario no encontrado");
+            throw new ResourceNotFoundException("The user with the " + id + " has not been found");
            // return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");   //Esto se remplaza para implementar las excepciones(línea de arriba).
         }
         Uuser_Get_Dto get_uuserDto = _uuserService.convertUuserToUuserGetDTO(get_user);   // Optimizar para saber si es nulo que devuelva un mensaje de que no lo  encontro.
@@ -44,6 +44,7 @@ public class UuserController {
 
         return ResponseEntity.ok(get_uuserDto);
     }
+
     //@GetMapping("/getAll")           //Este enpoint retorna una lista de tipo Uuser.  INUTILIZADO!
     //public ResponseEntity<List> getAllUuser() throws ResourceNotFoundException {
 
@@ -68,6 +69,8 @@ public class UuserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
 
     }
+
+
 
 
 }

@@ -9,9 +9,9 @@ public class Posted {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id",nullable = false)
-    private Integer postedId;
-    @OneToOne
-    @JoinColumn
+    private Long postedId;
+    @ManyToOne
+    @JoinColumn(name = "userName")
     private Uuser uuser;
     @Column
     private List<String> pictured;
@@ -25,13 +25,15 @@ public class Posted {
     private String locationX;        // Hay que cambiar el tipo de dato de String a Location para poder usar google maps.
     @Column String locationY;
 
-    public Integer getPostedId() {
+    public Long getPostedId() {
         return postedId;
     }
 
-    public void setPostedId(Integer postedId) {
+    public void setPostedId(Long postedId) {
         this.postedId = postedId;
     }
+
+
 
     public Uuser getUuser() {
         return uuser;

@@ -4,10 +4,10 @@ import com.app.tap.entitites.Posted;
 import com.app.tap.entitites.Uuser;
 import com.app.tap.entitites.dtos.Posted_Create_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
+import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.repository.PostedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.app.tap.service.UuserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,19 +17,53 @@ public class PostedService {
 
      @Autowired
      PostedRepository _postedRepository;
-     UuserService _userService;
+     private final UuserService _userService;
 
-     public Posted newPosted(Posted _posted){
-          return _postedRepository.save(_posted);
+    public PostedService(UuserService userService) {
+        _userService = userService;                         // hago una inyección de dependecias de uuserservices.(A LA HORA DE USAR UN SERVICIO DENTRO DE OTRO SERVICIO ES NECESARIO HACER UNA INYECION DE DEPENDECIAS.
+    }
+
+    public Posted newPosted(Posted _posted){
+          return _postedRepository.save(_posted);  // Cuando se crea un nuevo posteo se busca el Uuser en la Db y se lo asocia en el DTO del posteo.
+
      }
 
+    public Optional<Posted> findByIdPosted(Integer id){
 
-     public List<Posted> getAll() {return _postedRepository.findAll();}  // Tengo que verificar que en vez de devolver una list de posted sea una list de Posted_Dto.
+        return _postedRepository.findById(Long.valueOf(id)); //Tener cuidado, el tipo de dato de la propiedad postedId es Long, y estoy busncando por id,(se esta usando una conversion de datos.
+
+    }
+
+     public List<Posted> getAll() {
+        return _postedRepository.findAll();
+    }  // Tengo que verificar que en vez de devolver una list de posted sea una list de Posted_Dto.
+
+
+
+    public void deletPosted(Integer Id) throws ResourceNotFoundException {
+
+        if(findByIdPosted(Id).isEmpty())
+            throw  new ResourceNotFoundException("No existe el usuario con el id: "+ Id);
+        Posted del_Posted = _postedRepository.findById(Long.valueOf(Id)).orElse(null);
+
+        _postedRepository.delete(del_Posted);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
      public Posted_Get_Dto convertPostedToDTO(Posted posted){    //Este metodo por lo general lo uso para devolver un posteo.
           Posted_Get_Dto posted_get_dto = new Posted_Get_Dto();
 
-          posted_get_dto.setId(posted.getPostedId());
+          posted_get_dto.setId(Math.toIntExact(posted.getPostedId()));
           posted_get_dto.setUuser(_userService.convertUuserToUuserGetDTO(posted.getUuser()));  //aca tuve que implementar el serivce de uuser para poder pasar de Uuser a Dto.
           posted_get_dto.setPictured(posted.getPictured());
           posted_get_dto.setPictured_fav(posted.getPicture_fav());
@@ -46,7 +80,7 @@ public class PostedService {
 
           Posted posted = new Posted();
 
-          Uuser myUuser = _userService.findById(posted_create_dto.getUuser_get_dto().getId()).orElse(null); // Mediante el findbyId del Uuser service me traigo el uuser y lo uso para guardarlo en la base de datos.
+          Uuser myUuser = _userService.findByIdUuser(posted_create_dto.getUuser_get_dto().getId()).orElse(null); // Mediante el findbyId del Uuser service me traigo el uuser y lo uso para guardarlo en la base de datos.
 
            posted.setUuser(myUuser);
            posted.setPictured(posted_create_dto.getPictured());
@@ -55,7 +89,6 @@ public class PostedService {
            posted.setDescription(posted_create_dto.getDescription());
            posted.setLocationX(posted_create_dto.getLocationX());
            posted.setLocationY(posted_create_dto.getLocationY());
-
 
           return posted;
 
