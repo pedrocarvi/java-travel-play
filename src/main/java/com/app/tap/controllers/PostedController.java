@@ -3,6 +3,7 @@ package com.app.tap.controllers;
 
 import com.app.tap.entitites.Posted;
 import com.app.tap.entitites.dtos.Posted_Create_Dto;
+import com.app.tap.entitites.dtos.Posted_Edit_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
 import com.app.tap.exceptions.BadRequestException;
 import com.app.tap.exceptions.ResourceNotFoundException;
@@ -53,10 +54,33 @@ public class PostedController {
                 return  ResponseEntity.ok(get_posted_dto);
         }
 
+
         @DeleteMapping("deletById/{id}")
-    public ResponseEntity<String> deletPosted(@PathVariable Integer id ) throws ResourceNotFoundException{
+        public ResponseEntity<String> deletPostedById(@PathVariable Integer id) throws ResourceNotFoundException{
 
+            _postedService.deletPosted(id);
 
+           // Posted get_posted = _postedService.findByIdPosted(id).orElse(null);
+                    //if (get_posted == null){
+                        return ResponseEntity.ok("Post with id "+ id +" has been deleted ");
+                   // }
+                  //  else{
+                    //    throw new ResourceNotFoundException("The post with id "+ id + " could not be deleted");
+                    //}
+        }
+
+        @PutMapping("editPostById/{id}")
+    public ResponseEntity<String> editPostedById(@PathVariable Integer id, Posted_Edit_Dto posted_dto) throws ResourceNotFoundException
+        {
+            try                     //Este endpoint esta resuelto con try and catch.
+            {
+                _postedService.editPosted(id, posted_dto);
+                return ResponseEntity.ok("Post with id "+ id + "has ben successfull update");
+            }
+            catch (ResourceNotFoundException e)
+            {
+                throw new ResourceNotFoundException("Untable to update post with id " + id);
+            }
         }
 
 }

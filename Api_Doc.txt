@@ -1,0 +1,105 @@
+				ENDPOINTS
+
+
+EPS Uuser ->
+
+getAllUsers__________*
+getUserProfile_______*
+postUuser____________*
+
+
+
+EPS como Admin ->
+ deletPostbyId___________
+ deletUserById___________*              (Falta hacer que solo el admin pueda eliminar el uuser) (Tambien falta hacer que se deban eliminar todas las publicaciones hechas por el uuser que se quiera eliminar porque sino habra problemas con la entidad referencial)
+
+
+
+EPS Posted->
+getAllPost()_________*              
+getPostById()________*
+getAllPostByUuser____      (Endpoint para listar todos los posteos del usuario)
+deletPost()__________*
+editPost()___________*
+createPost()_________*
+ 
+
+
+
+				ENTIDADES
+
+
+Uuser:
+	
+	-id
+	
+	-userName
+	
+	-Email
+	
+	-pssword
+	
+	-firstName
+	
+	-lastName
+	
+	-userRole
+
+
+
+
+
+
+Posted:
+	-id
+
+	-uuserDTO
+		{
+		-Id
+
+		-userName
+
+		-email
+
+		-firstName
+
+		-lastName
+		}
+
+	-pictured
+
+	-pictured_fav
+
+	-name_posted
+
+	-description
+
+	-locationX
+
+	-locationY
+
+
+
+
+
+
+Comments:
+
+	-id
+
+	-UuserDTO
+		{
+			-Id
+
+			-userName
+
+			-email
+			
+			-firstName
+
+			-lastName
+		}
+
+	-Comentario
+
+	-Fecha y Hora

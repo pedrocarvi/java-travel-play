@@ -72,6 +72,7 @@ public class UuserService {
         _uuserRepository.delete(del_Uuser);
 
 
+
     }
 
     public void convertUuserDtoToUuserInPost(Uuser_Get_Dto uuser_get_dto){

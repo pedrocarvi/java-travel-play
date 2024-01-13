@@ -3,12 +3,12 @@ package com.app.tap.service;
 import com.app.tap.entitites.Posted;
 import com.app.tap.entitites.Uuser;
 import com.app.tap.entitites.dtos.Posted_Create_Dto;
+import com.app.tap.entitites.dtos.Posted_Edit_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
 import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.repository.PostedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +30,7 @@ public class PostedService {
 
     public Optional<Posted> findByIdPosted(Integer id){
 
-        return _postedRepository.findById(Long.valueOf(id)); //Tener cuidado, el tipo de dato de la propiedad postedId es Long, y estoy busncando por id,(se esta usando una conversion de datos.
+        return _postedRepository.findById(Long.valueOf(id));    //Tener cuidado, el tipo de dato de la propiedad postedId es Long, y estoy busncando por id,(se esta usando una conversion de datos.
 
     }
 
@@ -43,10 +43,31 @@ public class PostedService {
     public void deletPosted(Integer Id) throws ResourceNotFoundException {
 
         if(findByIdPosted(Id).isEmpty())
-            throw  new ResourceNotFoundException("No existe el usuario con el id: "+ Id);
+            throw  new ResourceNotFoundException("The post with id "+ Id + " could not be deleted");
         Posted del_Posted = _postedRepository.findById(Long.valueOf(Id)).orElse(null);
 
         _postedRepository.delete(del_Posted);
+    }
+
+    public void editPosted(Integer Id, Posted_Edit_Dto edit_posted_update) throws ResourceNotFoundException{
+        if (findByIdPosted(Id).isEmpty())
+            throw new ResourceNotFoundException("Post with id: "+ Id +" not found to edit");
+
+        Posted edit_posted = _postedRepository.findById(Long.valueOf(Id)).orElse(null); //Traigo el posteo que tengo que editar
+
+        // aca edito todos los valores del posteo excepto el Id por es el mismo, y el Uuser porque tambien tiene que ser el mismo.
+
+        edit_posted.setPictured(edit_posted_update.getPictured());
+        edit_posted.setPicture_fav(edit_posted_update.getPictured_fav());
+        edit_posted.setName_posted(edit_posted_update.getName_posted());
+        edit_posted.setDescription(edit_posted_update.getDescription());
+        edit_posted.setLocationX(edit_posted_update.getLocationX());
+        edit_posted.setLocationY(edit_posted_update.getLocationY());
+
+        //aca tengo que guardarlo en la db
+        _postedRepository.save(edit_posted);
+
+        //Corroborar y probar el endpoint para ver que este bien hecho
     }
 
 

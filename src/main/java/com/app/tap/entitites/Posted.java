@@ -33,8 +33,6 @@ public class Posted {
         this.postedId = postedId;
     }
 
-
-
     public Uuser getUuser() {
         return uuser;
     }
