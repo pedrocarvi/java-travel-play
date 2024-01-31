@@ -1,7 +1,9 @@
 package com.app.tap.service;
 
+import com.app.tap.entitites.Comment;
 import com.app.tap.entitites.Posted;
 import com.app.tap.entitites.Uuser;
+import com.app.tap.entitites.dtos.Comment_Dto;
 import com.app.tap.entitites.dtos.Posted_Create_Dto;
 import com.app.tap.entitites.dtos.Posted_Edit_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
@@ -9,6 +11,8 @@ import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.repository.PostedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,14 +21,54 @@ public class PostedService {
 
      @Autowired
      PostedRepository _postedRepository;
-     private final UuserService _userService;
+     private  UuserService _userService;
+     private  CommentService _commentService;
 
-    public PostedService(UuserService userService) {
-        _userService = userService;                         // hago una inyección de dependecias de uuserservices.(A LA HORA DE USAR UN SERVICIO DENTRO DE OTRO SERVICIO ES NECESARIO HACER UNA INYECION DE DEPENDECIAS.
-    }
+
+     @Autowired
+     public void setUserService(UuserService userService){
+         _userService = userService;
+     }
+
+     @Autowired
+     public void setCommentService(CommentService commentService){
+         _commentService = commentService;
+     }
+
+
+
+
+
+
+
+   // public PostedService(UuserService userService, CommentService commentService) {
+   //     _userService = userService;                         // hago una inyección de dependecias de uuserservices.(A LA HORA DE USAR UN SERVICIO DENTRO DE OTRO SERVICIO ES NECESARIO HACER UNA INYECION DE DEPENDECIAS.
+   //     _commentService = commentService;
+    //}
+
+
+
+
+
+
+
+
+
 
     public Posted newPosted(Posted _posted){
-          return _postedRepository.save(_posted);  // Cuando se crea un nuevo posteo se busca el Uuser en la Db y se lo asocia en el DTO del posteo.
+
+         Posted the_posted = new Posted();
+         the_posted.setPostedId(_posted.getPostedId());
+         the_posted.setUuserId(_posted.getUuserId());
+         the_posted.setPictured(_posted.getPictured());
+         the_posted.setName_posted(_posted.getName_posted());
+         the_posted.setDescription(_posted.getDescription());
+         List<Integer> listavacia = new ArrayList<>();
+         the_posted.setCommentsId(listavacia);
+         the_posted.setLocationX(_posted.getLocationX());
+         the_posted.setLocationY(_posted.getLocationY());
+
+          return _postedRepository.save(the_posted);  // Cuando se crea un nuevo posteo se busca el Uuser en la Db y se lo asocia en el DTO del posteo.
 
      }
 
@@ -81,7 +125,7 @@ public class PostedService {
 
 
 
-     public Posted_Get_Dto convertPostedToDTO(Posted posted){    //Este metodo por lo general lo uso para devolver un posteo.
+   /*  public Posted_Get_Dto convertPostedToDTO(Posted posted){    //Este metodo por lo general lo uso para devolver un posteo.
           Posted_Get_Dto posted_get_dto = new Posted_Get_Dto();
 
           posted_get_dto.setId(Math.toIntExact(posted.getPostedId()));
@@ -90,6 +134,15 @@ public class PostedService {
           posted_get_dto.setPictured_fav(posted.getPicture_fav());
           posted_get_dto.setName_posted(posted.getName_posted());
           posted_get_dto.setDescription(posted.getDescription());
+
+          // aca hay q transformar la lista de comments a comments_get_dto;
+         List<Comment_Dto> commentDTOList = new ArrayList<>();
+         for (Comment comment : posted.getComments()) {
+             Comment_Dto commentDTO = _commentService.converCommentToDto(comment);
+             commentDTOList.add(commentDTO);
+         }
+
+          posted_get_dto.setComments(commentDTOList); //Esto recibe una lista pero de tipo comments_get_dto.
           posted_get_dto.setLocationX(posted.getLocationX());
           posted_get_dto.setLocationY(posted.getLocationY());
 
@@ -115,4 +168,22 @@ public class PostedService {
 
      }
 
+     public Posted convertGetDtoToPosted(Posted_Get_Dto posted_get_dto){ //Este lo uso para convertir de get a posted ya que en comment lo necesito para manejarlo en la base de datos, ya que a la hora de cambiar de commnet_dto a comment, necesito cambiar de posted_get_dto a posted.
+
+        Posted posted = new Posted();
+
+         Uuser myUuser = _userService.findByIdUuser(posted_get_dto.getUuser().getId()).orElse(null);
+
+         posted.setUuser(myUuser);
+         posted.setPictured(posted_get_dto.getPictured());
+         posted.setPicture_fav(posted_get_dto.getPictured_fav());
+         posted.setName_posted(posted_get_dto.getName_posted());
+         posted.setDescription(posted_get_dto.getDescription());
+         posted.setLocationX(posted_get_dto.getLocationX());
+         posted.setLocationY(posted_get_dto.getLocationY());
+
+         return  posted;
+     }
+
+    */
 }

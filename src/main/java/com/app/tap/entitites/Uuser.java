@@ -15,7 +15,7 @@ public class Uuser {
     private String pssword;
     @Column
     private String firstName;
-    @Column
+    @Column 
     private String lastName;
     @Enumerated(EnumType.STRING)
     private Role userRole;

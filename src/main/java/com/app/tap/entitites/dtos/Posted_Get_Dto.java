@@ -5,42 +5,48 @@ import java.util.List;
 
 public class Posted_Get_Dto implements Serializable {
 
-    private Integer Id;
-    private Uuser_Get_Dto uuserDto;
+    private Integer postedId;
+    private Integer UuserId;
     private List<String> pictured;
     private String pictured_fav;
     private String name_posted;
     private String description;
+    private List<Integer> commentsId;
     private String locationX;
     private String locationY;
 
-    public Posted_Get_Dto(Integer Id, Uuser_Get_Dto uuser, List<String> pictured, String pictured_fav, String name_posted, String description, String locationX, String locationY) {
-        this.Id = Id;
-        this.uuserDto = uuser;
+
+
+    public Posted_Get_Dto(){
+
+    }
+
+    public Posted_Get_Dto(Integer postedId, Integer uuserId, List<String> pictured, String pictured_fav, String name_posted, String description, List<Integer> commentsId, String locationX, String locationY) {
+        this.postedId = postedId;
+        this.UuserId = uuserId;
         this.pictured = pictured;
         this.pictured_fav = pictured_fav;
         this.name_posted = name_posted;
         this.description = description;
+        this.commentsId = commentsId;
         this.locationX = locationX;
         this.locationY = locationY;
     }
 
-    public Posted_Get_Dto() {
-
+    public Integer getPostedId() {
+        return postedId;
     }
 
-    public Integer Id(){
-        return Id;
-    }
-    public void setId(Integer Id){
-        this.Id = Id;
-    }
-    public Uuser_Get_Dto getUuser() {
-        return uuserDto;
+    public void setPostedId(Integer postedId) {
+        this.postedId = postedId;
     }
 
-    public void setUuser(Uuser_Get_Dto uuser) {
-        this.uuserDto = uuser;
+    public Integer getUuserId() {
+        return UuserId;
+    }
+
+    public void setUuserId(Integer uuserId) {
+        this.UuserId = uuserId;
     }
 
     public List<String> getPictured() {
@@ -73,6 +79,14 @@ public class Posted_Get_Dto implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Integer> getCommentsId() {
+        return commentsId;
+    }
+
+    public void setCommentsId(List<Integer> commentsId) {
+        this.commentsId = commentsId;
     }
 
     public String getLocationX() {

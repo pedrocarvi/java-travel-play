@@ -1,6 +1,6 @@
 package com.app.tap.entitites;
-import com.app.tap.entitites.dtos.Uuser_Get_Dto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -8,11 +8,13 @@ import java.util.List;
 public class Posted {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     private Long postedId;
-    @ManyToOne
-    @JoinColumn(name = "userName")
-    private Uuser uuser;
+    //@ManyToOne
+    //@JoinColumn(name = "userName")
+    //private Uuser uuser;
+    @Column
+    private Integer UuserId;
     @Column
     private List<String> pictured;
     @Column
@@ -21,9 +23,33 @@ public class Posted {
     private String name_posted;
     @Column
     private String description;
+    //@OneToMany(mappedBy = "posted" , cascade = CascadeType.ALL)
+    //private List<Comment> comments;
+    @Column
+    private List<Integer> commentsId;
+
     @Column
     private String locationX;        // Hay que cambiar el tipo de dato de String a Location para poder usar google maps.
-    @Column String locationY;
+    @Column
+    private String locationY;
+
+
+
+    public Posted() {
+
+    }
+
+    public Posted(Long postedId, Integer uuserId, List<String> pictured, String picture_fav, String name_posted, String description, List<Integer> commentId, String locationX, String locationY) {
+        this.postedId = postedId;
+        UuserId = uuserId;
+        this.pictured = pictured;
+        this.picture_fav = picture_fav;
+        this.name_posted = name_posted;
+        this.description = description;
+        this.commentsId = commentId;
+        this.locationX = locationX;
+        this.locationY = locationY;
+    }
 
     public Long getPostedId() {
         return postedId;
@@ -33,12 +59,12 @@ public class Posted {
         this.postedId = postedId;
     }
 
-    public Uuser getUuser() {
-        return uuser;
+    public Integer getUuserId() {
+        return UuserId;
     }
 
-    public void setUuser(Uuser uuser) {
-        this.uuser = uuser;
+    public void setUuserId(Integer uuserId) {
+        UuserId = uuserId;
     }
 
     public List<String> getPictured() {
@@ -71,6 +97,14 @@ public class Posted {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Integer> getCommentsId() {
+        return commentsId;
+    }
+
+    public void setCommentsId(List<Integer> commentsId) {
+        this.commentsId = commentsId;
     }
 
     public String getLocationX() {

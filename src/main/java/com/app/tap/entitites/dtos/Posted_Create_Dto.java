@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Posted_Create_Dto implements Serializable {
 
-    private Uuser_Get_Dto uuser_get_dto;
+    private Integer UuserId;
     private List<String> pictured;
     private String pictured_fav;
     private String name_posted;
@@ -13,22 +13,22 @@ public class Posted_Create_Dto implements Serializable {
     private String locationX;
     private String locationY;
 
-    public Posted_Create_Dto(Uuser_Get_Dto uuser_get_dto, List<String> pictured, String pictured_fav, String name_posted, String description, String locationX, String locationY) {
-        this.uuser_get_dto = uuser_get_dto;
+    public Posted_Create_Dto(Integer uuserId, List<String> pictured, String pictured_fav, String name_posted, String description, String locationX, String locationY) {
+        UuserId = uuserId;
         this.pictured = pictured;
-        this.pictured_fav = pictured_fav;               //No hace falta este constructor pero lo impelento igual.
+        this.pictured_fav = pictured_fav;
         this.name_posted = name_posted;
         this.description = description;
         this.locationX = locationX;
         this.locationY = locationY;
     }
 
-    public Uuser_Get_Dto getUuser_get_dto() {
-        return uuser_get_dto;
+    public Integer getUuserId() {
+        return UuserId;
     }
 
-    public void setUuser_get_dto(Uuser_Get_Dto uuser_get_dto) {
-        this.uuser_get_dto = uuser_get_dto;
+    public void setUuserId(Integer uuserId) {
+        UuserId = uuserId;
     }
 
     public List<String> getPictured() {

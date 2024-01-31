@@ -7,6 +7,7 @@ import com.app.tap.entitites.dtos.Posted_Edit_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
 import com.app.tap.exceptions.BadRequestException;
 import com.app.tap.exceptions.ResourceNotFoundException;
+import com.app.tap.service.Mapping.PostedMapping;
 import com.app.tap.service.PostedService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,19 @@ public class PostedController {
         @Autowired
         PostedService _postedService;
 
-        @PostMapping("/create")
+
+        private PostedMapping _postedMapping;
+        @Autowired
+        public void SetPostedMapping(PostedMapping postedMapping){
+        _postedMapping = postedMapping;
+    }
+
+
+
+    @PostMapping("/create")
         public ResponseEntity<Posted> newPosted(@RequestBody Posted_Create_Dto posted_dto) throws BadRequestException {
 
-               Posted new_posted =  _postedService.convertDTOToPosted(posted_dto);           //Mapeo el dto a posteo y lo guardo en variable.
+               Posted new_posted =  _postedMapping.convertDTOToPosted(posted_dto);           //Mapeo el dto a posteo y lo guardo en variable.
                 _postedService.newPosted(new_posted);                                          //Guardo el posteo con los servicios.
 
                 return ResponseEntity.ok(new_posted);   //Retorno ok en la response.
@@ -49,7 +59,7 @@ public class PostedController {
                     throw new ResourceNotFoundException("The post with id " + id + " has not been found");
                 }
 
-                Posted_Get_Dto get_posted_dto = _postedService.convertPostedToDTO(get_posted);
+                Posted_Get_Dto get_posted_dto = _postedMapping.convertPostedToDTO(get_posted);
 
                 return  ResponseEntity.ok(get_posted_dto);
         }
@@ -82,5 +92,4 @@ public class PostedController {
                 throw new ResourceNotFoundException("Untable to update post with id " + id);
             }
         }
-
 }

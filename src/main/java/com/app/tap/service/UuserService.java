@@ -45,6 +45,7 @@ public class UuserService {
         return uuser;                       //Por ultimo retorno el User ya mapeo de DTO.
     }
 
+
     public Uuser_Get_Dto convertUuserToUuserGetDTO(Uuser _uuser){
         Uuser_Get_Dto uuser_get_dto = new Uuser_Get_Dto();
 
