@@ -1,5 +1,7 @@
 				ENDPOINTS
 
+			Los indicados con * estan funcionales.
+
 
 EPS Uuser ->
 
@@ -23,6 +25,11 @@ deletPost()__________*
 editPost()___________*
 createPost()_________*
  
+
+EPS Coment ->
+GetAllComments_______*
+PostComent()_________*
+DeletComent()________
 
 
 
@@ -53,18 +60,7 @@ Uuser:
 Posted:
 	-id
 
-	-uuserDTO
-		{
-		-Id
-
-		-userName
-
-		-email
-
-		-firstName
-
-		-lastName
-		}
+	-UuserId
 
 	-pictured
 
@@ -73,6 +69,8 @@ Posted:
 	-name_posted
 
 	-description
+	
+	-commentsId
 
 	-locationX
 
@@ -87,18 +85,9 @@ Comments:
 
 	-id
 
-	-UuserDTO
-		{
-			-Id
-
-			-userName
-
-			-email
-			
-			-firstName
-
-			-lastName
-		}
+	-UuserId
+	
+	-PostedId
 
 	-Comentario
 
