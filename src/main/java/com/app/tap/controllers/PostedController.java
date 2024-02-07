@@ -2,6 +2,7 @@ package com.app.tap.controllers;
 
 
 import com.app.tap.entitites.Posted;
+import com.app.tap.entitites.Uuser;
 import com.app.tap.entitites.dtos.Posted_Create_Dto;
 import com.app.tap.entitites.dtos.Posted_Edit_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
@@ -9,12 +10,14 @@ import com.app.tap.exceptions.BadRequestException;
 import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.service.Mapping.PostedMapping;
 import com.app.tap.service.PostedService;
+import com.app.tap.service.UuserService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/posted")
@@ -22,6 +25,7 @@ public class PostedController {
 
         @Autowired
         PostedService _postedService;
+        UuserService _uuserService;
 
 
         private PostedMapping _postedMapping;
@@ -29,6 +33,8 @@ public class PostedController {
         public void SetPostedMapping(PostedMapping postedMapping){
         _postedMapping = postedMapping;
     }
+        public void SetUuserService(UuserService uuserService){_uuserService =uuserService;}
+
 
 
 
@@ -91,5 +97,15 @@ public class PostedController {
             {
                 throw new ResourceNotFoundException("Untable to update post with id " + id);
             }
+        }
+        @GetMapping("getAllPostByUuser/{id}")
+    public ResponseEntity<List<Posted>> getAllPosByUuser(@PathVariable Integer id) throws ResourceNotFoundException{
+
+
+
+            Uuser myUuser = _uuserService.findByIdUuser(id).orElse(null);
+
+            Optional<Posted> myPostedforUuser = _postedService.findByIdPosted(myUuser.)
+
         }
 }
