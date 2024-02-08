@@ -20,7 +20,7 @@ EPS como Admin ->
 EPS Posted->
 getAllPost()_________*              
 getPostById()________*
-getAllPostByUuser____      (Endpoint para listar todos los posteos del usuario)
+getAllPostByUuser____*      (Endpoint para listar todos los posteos del usuario)
 deletPost()__________*
 editPost()___________*
 createPost()_________*

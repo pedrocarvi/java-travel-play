@@ -13,6 +13,7 @@ import com.app.tap.service.PostedService;
 import com.app.tap.service.UuserService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class PostedController {
 
         @Autowired
         PostedService _postedService;
+        @Autowired
         UuserService _uuserService;
 
 
@@ -33,6 +35,7 @@ public class PostedController {
         public void SetPostedMapping(PostedMapping postedMapping){
         _postedMapping = postedMapping;
     }
+        @Autowired
         public void SetUuserService(UuserService uuserService){_uuserService =uuserService;}
 
 
@@ -98,14 +101,25 @@ public class PostedController {
                 throw new ResourceNotFoundException("Untable to update post with id " + id);
             }
         }
-        @GetMapping("getAllPostByUuser/{id}")
-    public ResponseEntity<List<Posted>> getAllPosByUuser(@PathVariable Integer id) throws ResourceNotFoundException{
+//        @GetMapping("getAllPostByUuser/{id}")
+//    public ResponseEntity<List<Posted>> getAllPosByUuser(@PathVariable Integer id) throws ResourceNotFoundException{
+//
+//
+//
+//            Uuser myUuser = _uuserService.findByIdUuser(id).orElse(null);
+//
+//            List<Posted> myPostedforUuser = _postedService.getPostedByUuser(myUuser.getUserId());
+//
+//            return myPostedforUuser;
+//        }
 
+    @GetMapping("/getAllPostByUuser/{id}")
+    public ResponseEntity<List<Posted>> getAllPosByUuser(@PathVariable Integer id) throws ResourceNotFoundException {
 
+        Uuser myUuser = _uuserService.findByIdUuser(id).orElseThrow(() -> new ResourceNotFoundException("Uuser not found with id: " + id));
 
-            Uuser myUuser = _uuserService.findByIdUuser(id).orElse(null);
+        List<Posted> myPostedforUuser = _postedService.findAllByUserId(myUuser.getUserId());
 
-            Optional<Posted> myPostedforUuser = _postedService.findByIdPosted(myUuser.)
-
-        }
+        return new ResponseEntity<>(myPostedforUuser, HttpStatus.OK);
+    }
 }

@@ -22,6 +22,9 @@ public class Posted_Create_Dto implements Serializable {
         this.locationX = locationX;
         this.locationY = locationY;
     }
+    public Posted_Create_Dto(){
+
+    }
 
     public Integer getUuserId() {
         return UuserId;

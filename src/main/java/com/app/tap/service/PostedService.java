@@ -1,12 +1,7 @@
 package com.app.tap.service;
 
-import com.app.tap.entitites.Comment;
 import com.app.tap.entitites.Posted;
-import com.app.tap.entitites.Uuser;
-import com.app.tap.entitites.dtos.Comment_Dto;
-import com.app.tap.entitites.dtos.Posted_Create_Dto;
 import com.app.tap.entitites.dtos.Posted_Edit_Dto;
-import com.app.tap.entitites.dtos.Posted_Get_Dto;
 import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.repository.PostedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,6 +109,13 @@ public class PostedService {
         //Corroborar y probar el endpoint para ver que este bien hecho
     }
 
+
+
+    public List<Posted> findAllByUserId(Integer userId) {
+
+        return _postedRepository.findAllByUuserId(userId);
+
+    }
 
 
 
