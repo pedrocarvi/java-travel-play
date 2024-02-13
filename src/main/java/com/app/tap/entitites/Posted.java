@@ -26,6 +26,10 @@ public class Posted {
     //@OneToMany(mappedBy = "posted" , cascade = CascadeType.ALL)
     //private List<Comment> comments;
     @Column
+    private Boolean posted_fav;
+    @Column
+    private String category;
+    @Column
     private List<Integer> commentsId;
 
     @Column
@@ -39,14 +43,16 @@ public class Posted {
 
     }
 
-    public Posted(Long postedId, Integer uuserId, List<String> pictured, String picture_fav, String name_posted, String description, List<Integer> commentId, String locationX, String locationY) {
+    public Posted(Long postedId, Integer uuserId, List<String> pictured, String picture_fav, String name_posted, String description, Boolean posted_fav, String category, List<Integer> commentsId, String locationX, String locationY) {
         this.postedId = postedId;
         UuserId = uuserId;
         this.pictured = pictured;
         this.picture_fav = picture_fav;
         this.name_posted = name_posted;
         this.description = description;
-        this.commentsId = commentId;
+        this.posted_fav = posted_fav;
+        this.category = category;
+        this.commentsId = commentsId;
         this.locationX = locationX;
         this.locationY = locationY;
     }
@@ -97,6 +103,22 @@ public class Posted {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getPosted_fav() {
+        return posted_fav;
+    }
+
+    public void setPosted_fav(Boolean posted_fav) {
+        this.posted_fav = posted_fav;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public List<Integer> getCommentsId() {

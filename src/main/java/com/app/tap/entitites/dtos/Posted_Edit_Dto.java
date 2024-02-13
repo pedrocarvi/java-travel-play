@@ -9,14 +9,18 @@ public class Posted_Edit_Dto implements Serializable {
     private String pictured_fav;
     private String name_posted;
     private String description;
+    private String category;
+    private Boolean posted_fav;
     private String locationX;
     private String locationY;
 
-    public Posted_Edit_Dto(List<String> pictured, String pictured_fav, String name_posted, String description, String locationX, String locationY) {
+    public Posted_Edit_Dto(List<String> pictured, String pictured_fav, String name_posted, String description, String category, Boolean posted_fav, String locationX, String locationY) {
         this.pictured = pictured;
         this.pictured_fav = pictured_fav;
         this.name_posted = name_posted;
         this.description = description;
+        this.category = category;
+        this.posted_fav = posted_fav;
         this.locationX = locationX;
         this.locationY = locationY;
     }
@@ -24,6 +28,7 @@ public class Posted_Edit_Dto implements Serializable {
     public Posted_Edit_Dto() {
 
     }
+
 
     public List<String> getPictured() {
         return pictured;
@@ -55,6 +60,22 @@ public class Posted_Edit_Dto implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Boolean getPosted_fav() {
+        return posted_fav;
+    }
+
+    public void setPosted_fav(Boolean posted_fav) {
+        this.posted_fav = posted_fav;
     }
 
     public String getLocationX() {

@@ -10,18 +10,23 @@ public class Posted_Create_Dto implements Serializable {
     private String pictured_fav;
     private String name_posted;
     private String description;
+    private String category;
+    private Boolean posted_fav;
     private String locationX;
     private String locationY;
 
-    public Posted_Create_Dto(Integer uuserId, List<String> pictured, String pictured_fav, String name_posted, String description, String locationX, String locationY) {
+    public Posted_Create_Dto(Integer uuserId, List<String> pictured, String pictured_fav, String name_posted, String description, String category, Boolean posted_fav, String locationX, String locationY) {
         UuserId = uuserId;
         this.pictured = pictured;
         this.pictured_fav = pictured_fav;
         this.name_posted = name_posted;
         this.description = description;
+        this.category = category;
+        this.posted_fav = posted_fav;
         this.locationX = locationX;
         this.locationY = locationY;
     }
+
     public Posted_Create_Dto(){
 
     }
@@ -64,6 +69,22 @@ public class Posted_Create_Dto implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Boolean getPosted_fav() {
+        return posted_fav;
+    }
+
+    public void setPosted_fav(Boolean posted_fav) {
+        this.posted_fav = posted_fav;
     }
 
     public String getLocationX() {

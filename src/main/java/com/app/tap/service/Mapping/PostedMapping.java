@@ -40,6 +40,8 @@ public class PostedMapping {
         //posted_get_dto.setUuser(posted.getUuserId());  //aca tuve que implementar el serivce de uuser para poder pasar de Uuser a Dto.
 
         posted_get_dto.setPictured(posted.getPictured());
+        posted_get_dto.setCategory(posted.getCategory());
+        posted_get_dto.setPosted_fav(posted.getPosted_fav());
         posted_get_dto.setPictured_fav(posted.getPicture_fav());
         posted_get_dto.setName_posted(posted.getName_posted());
         posted_get_dto.setDescription(posted.getDescription());
@@ -72,6 +74,8 @@ public class PostedMapping {
         posted.setPicture_fav(posted_create_dto.getPictured_fav());
         posted.setName_posted(posted_create_dto.getName_posted());
         posted.setDescription(posted_create_dto.getDescription());
+        posted.setPosted_fav(posted_create_dto.getPosted_fav());
+        posted.setCategory(posted_create_dto.getCategory());
         posted.setLocationX(posted_create_dto.getLocationX());
         posted.setLocationY(posted_create_dto.getLocationY());
 
@@ -91,6 +95,8 @@ public class PostedMapping {
         posted.setPictured(posted_get_dto.getPictured());
         posted.setPicture_fav(posted_get_dto.getPictured_fav());
         posted.setName_posted(posted_get_dto.getName_posted());
+        posted.setPosted_fav(posted_get_dto.getPosted_fav());
+        posted.setCategory(posted_get_dto.getCategory());
         posted.setDescription(posted_get_dto.getDescription());
         posted.setLocationX(posted_get_dto.getLocationX());
         posted.setLocationY(posted_get_dto.getLocationY());

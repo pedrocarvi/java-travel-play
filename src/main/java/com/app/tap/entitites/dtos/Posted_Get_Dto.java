@@ -12,26 +12,30 @@ public class Posted_Get_Dto implements Serializable {
     private String name_posted;
     private String description;
     private List<Integer> commentsId;
+    private Boolean posted_fav;
+    private String category;
     private String locationX;
     private String locationY;
-
 
 
     public Posted_Get_Dto(){
 
     }
 
-    public Posted_Get_Dto(Integer postedId, Integer uuserId, List<String> pictured, String pictured_fav, String name_posted, String description, List<Integer> commentsId, String locationX, String locationY) {
+    public Posted_Get_Dto(Integer postedId, Integer uuserId, List<String> pictured, String pictured_fav, String name_posted, String description, List<Integer> commentsId, Boolean posted_fav, String category, String locationX, String locationY) {
         this.postedId = postedId;
-        this.UuserId = uuserId;
+        UuserId = uuserId;
         this.pictured = pictured;
         this.pictured_fav = pictured_fav;
         this.name_posted = name_posted;
         this.description = description;
         this.commentsId = commentsId;
+        this.posted_fav = posted_fav;
+        this.category = category;
         this.locationX = locationX;
         this.locationY = locationY;
     }
+
 
     public Integer getPostedId() {
         return postedId;
@@ -46,7 +50,7 @@ public class Posted_Get_Dto implements Serializable {
     }
 
     public void setUuserId(Integer uuserId) {
-        this.UuserId = uuserId;
+        UuserId = uuserId;
     }
 
     public List<String> getPictured() {
@@ -87,6 +91,22 @@ public class Posted_Get_Dto implements Serializable {
 
     public void setCommentsId(List<Integer> commentsId) {
         this.commentsId = commentsId;
+    }
+
+    public Boolean getPosted_fav() {
+        return posted_fav;
+    }
+
+    public void setPosted_fav(Boolean posted_fav) {
+        this.posted_fav = posted_fav;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getLocationX() {

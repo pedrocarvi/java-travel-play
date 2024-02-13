@@ -59,6 +59,8 @@ public class PostedService {
          the_posted.setName_posted(_posted.getName_posted());
          the_posted.setDescription(_posted.getDescription());
          List<Integer> listavacia = new ArrayList<>();
+         the_posted.setCategory(_posted.getCategory());
+         the_posted.setPosted_fav(_posted.getPosted_fav());
          the_posted.setCommentsId(listavacia);
          the_posted.setLocationX(_posted.getLocationX());
          the_posted.setLocationY(_posted.getLocationY());
@@ -100,6 +102,8 @@ public class PostedService {
         edit_posted.setPicture_fav(edit_posted_update.getPictured_fav());
         edit_posted.setName_posted(edit_posted_update.getName_posted());
         edit_posted.setDescription(edit_posted_update.getDescription());
+        edit_posted.setPosted_fav(edit_posted_update.getPosted_fav());
+        edit_posted.setCategory(edit_posted_update.getCategory());
         edit_posted.setLocationX(edit_posted_update.getLocationX());
         edit_posted.setLocationY(edit_posted_update.getLocationY());
 
