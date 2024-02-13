@@ -69,6 +69,10 @@ Posted:
 	-name_posted
 
 	-description
+
+	-posted_fav
+
+	-category 	
 	
 	-commentsId
 
