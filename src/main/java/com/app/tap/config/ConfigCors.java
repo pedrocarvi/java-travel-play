@@ -1,4 +1,4 @@
-package com.app.tap;
+package com.app.tap.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

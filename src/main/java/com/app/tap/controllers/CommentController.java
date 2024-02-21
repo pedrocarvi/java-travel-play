@@ -2,12 +2,11 @@ package com.app.tap.controllers;
 
 
 import com.app.tap.entitites.Comment;
-import com.app.tap.entitites.Posted;
 import com.app.tap.entitites.dtos.Comment_Dto;
 import com.app.tap.exceptions.BadRequestException;
 import com.app.tap.exceptions.ResourceNotFoundException;
 import com.app.tap.service.CommentService;
-import com.app.tap.service.Mapping.CommentMapping;
+import com.app.tap.service.mapping.CommentMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +44,8 @@ public class CommentController {
     public ResponseEntity<Comment> newComment(@RequestBody Comment_Dto comment_dto) throws BadRequestException {
 
         Comment new_comment = _commentMapping.convertDtoToComment(comment_dto);
+
+
 
 
         return _commentService.addComment(new_comment);

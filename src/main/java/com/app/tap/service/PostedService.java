@@ -55,6 +55,7 @@ public class PostedService {
          Posted the_posted = new Posted();
          the_posted.setPostedId(_posted.getPostedId());
          the_posted.setUuserId(_posted.getUuserId());
+         the_posted.setPictured_fav(_posted.getPictured_fav());
          the_posted.setPictured(_posted.getPictured());
          the_posted.setName_posted(_posted.getName_posted());
          the_posted.setDescription(_posted.getDescription());
@@ -99,7 +100,7 @@ public class PostedService {
         // aca edito todos los valores del posteo excepto el Id por es el mismo, y el Uuser porque tambien tiene que ser el mismo.
 
         edit_posted.setPictured(edit_posted_update.getPictured());
-        edit_posted.setPicture_fav(edit_posted_update.getPictured_fav());
+        edit_posted.setPictured_fav(edit_posted_update.getPictured_fav());
         edit_posted.setName_posted(edit_posted_update.getName_posted());
         edit_posted.setDescription(edit_posted_update.getDescription());
         edit_posted.setPosted_fav(edit_posted_update.getPosted_fav());

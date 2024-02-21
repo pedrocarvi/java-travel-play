@@ -1,8 +1,7 @@
-package com.app.tap.service.Mapping;
+package com.app.tap.service.mapping;
 
 import com.app.tap.entitites.Comment;
 import com.app.tap.entitites.dtos.Comment_Dto;
-import com.app.tap.service.PostedService;
 import com.app.tap.service.UuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

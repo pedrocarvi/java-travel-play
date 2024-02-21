@@ -33,7 +33,7 @@ public class Uuser_Create_Dto implements Serializable {
     // Getters (no lleva setters)
 
 
-    public String getUserName() {
+    public String getUuserName() {
         return userName;
     }
 
@@ -54,7 +54,7 @@ public class Uuser_Create_Dto implements Serializable {
     }
 
 
-    public void setUserName(String userName) {
+    public void setUuserName(String userName) {
         this.userName = userName;
     }
 

@@ -1,19 +1,12 @@
-package com.app.tap.service.Mapping;
+package com.app.tap.service.mapping;
 
-import com.app.tap.entitites.Comment;
 import com.app.tap.entitites.Posted;
 import com.app.tap.entitites.Uuser;
-import com.app.tap.entitites.dtos.Comment_Dto;
 import com.app.tap.entitites.dtos.Posted_Create_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
-import com.app.tap.service.CommentService;
 import com.app.tap.service.UuserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class PostedMapping {
@@ -42,7 +35,7 @@ public class PostedMapping {
         posted_get_dto.setPictured(posted.getPictured());
         posted_get_dto.setCategory(posted.getCategory());
         posted_get_dto.setPosted_fav(posted.getPosted_fav());
-        posted_get_dto.setPictured_fav(posted.getPicture_fav());
+        posted_get_dto.setPictured_fav(posted.getPictured_fav());
         posted_get_dto.setName_posted(posted.getName_posted());
         posted_get_dto.setDescription(posted.getDescription());
 
@@ -71,7 +64,7 @@ public class PostedMapping {
 
         posted.setUuserId(posted_create_dto.getUuserId());
         posted.setPictured(posted_create_dto.getPictured());
-        posted.setPicture_fav(posted_create_dto.getPictured_fav());
+        posted.setPictured_fav(posted_create_dto.getPictured_fav());
         posted.setName_posted(posted_create_dto.getName_posted());
         posted.setDescription(posted_create_dto.getDescription());
         posted.setPosted_fav(posted_create_dto.getPosted_fav());
@@ -93,7 +86,7 @@ public class PostedMapping {
 
         posted.setUuserId(posted_get_dto.getUuserId());
         posted.setPictured(posted_get_dto.getPictured());
-        posted.setPicture_fav(posted_get_dto.getPictured_fav());
+        posted.setPictured_fav(posted_get_dto.getPictured_fav());
         posted.setName_posted(posted_get_dto.getName_posted());
         posted.setPosted_fav(posted_get_dto.getPosted_fav());
         posted.setCategory(posted_get_dto.getCategory());

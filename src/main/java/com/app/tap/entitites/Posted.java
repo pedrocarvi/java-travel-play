@@ -1,6 +1,5 @@
 package com.app.tap.entitites;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class Posted {
     @Column
     private List<String> pictured;
     @Column
-    private String picture_fav;
+    private String pictured_fav;
     @Column
     private String name_posted;
     @Column
@@ -47,7 +46,7 @@ public class Posted {
         this.postedId = postedId;
         UuserId = uuserId;
         this.pictured = pictured;
-        this.picture_fav = picture_fav;
+        this.pictured_fav = picture_fav;
         this.name_posted = name_posted;
         this.description = description;
         this.posted_fav = posted_fav;
@@ -81,12 +80,12 @@ public class Posted {
         this.pictured = pictured;
     }
 
-    public String getPicture_fav() {
-        return picture_fav;
+    public String getPictured_fav() {
+        return pictured_fav;
     }
 
-    public void setPicture_fav(String picture_fav) {
-        this.picture_fav = picture_fav;
+    public void setPictured_fav(String picture_fav) {
+        this.pictured_fav = picture_fav;
     }
 
     public String getName_posted() {

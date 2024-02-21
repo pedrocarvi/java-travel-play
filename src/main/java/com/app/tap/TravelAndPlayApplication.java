@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication//(exclude = { SecurityAutoConfiguration.class })
 public class TravelAndPlayApplication {
 
 	public static void main(String[] args) {

@@ -33,7 +33,7 @@ public class Uuser_Get_Dto implements Serializable {
     // Getters (no lleva setters)
 
     public Integer getId() { return Id; }
-    public String getUserName() {
+    public String getUuserName() {
         return userName;
     }
 
@@ -54,7 +54,7 @@ public class Uuser_Get_Dto implements Serializable {
     public void setId(Integer Id){
         this.Id = Id;
     }
-    public void setUserName(String userName) {
+    public void setUuserName(String userName) {
         this.userName = userName;
     }
 

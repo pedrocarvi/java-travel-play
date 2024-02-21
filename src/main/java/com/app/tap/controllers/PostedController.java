@@ -8,17 +8,15 @@ import com.app.tap.entitites.dtos.Posted_Edit_Dto;
 import com.app.tap.entitites.dtos.Posted_Get_Dto;
 import com.app.tap.exceptions.BadRequestException;
 import com.app.tap.exceptions.ResourceNotFoundException;
-import com.app.tap.service.Mapping.PostedMapping;
+import com.app.tap.service.mapping.PostedMapping;
 import com.app.tap.service.PostedService;
 import com.app.tap.service.UuserService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/posted")

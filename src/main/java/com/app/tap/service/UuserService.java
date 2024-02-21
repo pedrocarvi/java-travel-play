@@ -36,7 +36,7 @@ public class UuserService {
                                                             // Esto lo utilizo para crear un Uuser.
         Uuser uuser = new Uuser();
 
-        uuser.setUserName(_uuser_create_dto.getUserName());            //Seteo todas las propiedades del Dto en el user
+        uuser.setUuserName(_uuser_create_dto.getUuserName());            //Seteo todas las propiedades del Dto en el user
         uuser.setFirstName(_uuser_create_dto.getFirstName());
         uuser.setPssword(_uuser_create_dto.getPssword());
         uuser.setLastName(_uuser_create_dto.getLastName());
@@ -51,7 +51,7 @@ public class UuserService {
 
                                                      // Esto lo uso para devolver la entidad Uuser sin datos sensibles
         uuser_get_dto.setId(_uuser.getUserId());
-        uuser_get_dto.setUserName(_uuser.getUserName());
+        uuser_get_dto.setUuserName(_uuser.getUuserName());
         uuser_get_dto.setFirstName(_uuser.getFirstName());
         uuser_get_dto.setLastName(_uuser.getLastName());
         uuser_get_dto.setEmail(_uuser.getEmail());
