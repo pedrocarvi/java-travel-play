@@ -89,7 +89,7 @@ public class PostedController {
         }
 
         @PutMapping("editPostById/{id}")
-    public ResponseEntity<String> editPostedById(@PathVariable Integer id, Posted_Edit_Dto posted_dto) throws ResourceNotFoundException
+    public ResponseEntity<String> editPostedById(@PathVariable Integer id, @RequestBody Posted_Edit_Dto posted_dto) throws ResourceNotFoundException
         {
             try                     //Este endpoint esta resuelto con try and catch.
             {

@@ -11,7 +11,7 @@ public class ConfigCors implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")               // La notación /** permite solicitudes Cors para todas las rutas de la aplicación.
-                .allowedOrigins("http://localhost:8081")    // Reemplaza con el origen que desees permitir.
+                .allowedOrigins("http://localhost:3000")    // Reemplaza con el origen que desees permitir.
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .exposedHeaders("Authorization")
